@@ -116,7 +116,7 @@ export default function SeeLayout() {
     <div>
       <h1>Upload Json file - Example</h1>
 
-      <input type="file" onChange={handleChange} />
+      <input className="button" type="file" onChange={handleChange} />
       <LayoutFlex key={json.id} json={json} />
       {/* <TryFlex /> */}
     </div>
