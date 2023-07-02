@@ -8,7 +8,7 @@ export default function LayoutFlex({ json }) {
       {json.data === null ? (
         <div className={`${json.type}`} style={{ flex: json.flex }}>
           {children.map((child) => {
-            return <LayoutFlex json={child} />;
+            return <LayoutFlex key={json.id} json={child} />;
           })}
         </div>
       ) : (
