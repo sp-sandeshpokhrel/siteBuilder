@@ -113,7 +113,7 @@ export default function Home() {
   return (
     <div>
       <form className="small-form" onSubmit={handleAddChild}>
-        <label htmlFor="Row">Row</label>
+        <label htmlFor="Row">Row(Number of rows)</label>
         <input
           style={{ width: "80%", marginLeft: "10px" }}
           type="text"
@@ -123,7 +123,7 @@ export default function Home() {
           placeholder="Input number of row you want to create for selected cell"
         />
         <br />
-        <label htmlFor="flexforRow">Flex for Row</label>
+        <label htmlFor="flexforRow">Flex-size for Row</label>
         <input
           style={{ width: "80%", marginLeft: "10px" }}
           type="text"
@@ -133,7 +133,7 @@ export default function Home() {
           placeholder="eg: 1,2,3(should match number of row)"
         />
         <br />
-        <label htmlFor="Column">Column</label>
+        <label htmlFor="Column">Column(Number of Columns)</label>
         <input
           style={{ width: "80%", marginLeft: "10px" }}
           type="text"
@@ -144,7 +144,7 @@ export default function Home() {
         />
         <br />
 
-        <label htmlFor="flexforColumn">Flex for Column</label>
+        <label htmlFor="flexforColumn">Flex-size for Column</label>
         <input
           style={{ width: "80%", marginLeft: "10px" }}
           type="text"
