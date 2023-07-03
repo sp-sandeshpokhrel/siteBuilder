@@ -1,6 +1,6 @@
 "use client";
 import Flex from "@components/Flex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
 export default function Home() {
@@ -25,10 +25,10 @@ export default function Home() {
     const { name, value } = e.target;
     if (name === "row") {
       setCurrentData((prev) => ({ ...prev, [name]: value }));
-      setCurrentData((prev) => ({ ...prev, column: 0 }));
+      setCurrentData((prev) => ({ ...prev, column: 0, flexforColumn: [] }));
     } else if (name === "column") {
       setCurrentData((prev) => ({ ...prev, [name]: value }));
-      setCurrentData((prev) => ({ ...prev, row: 0 }));
+      setCurrentData((prev) => ({ ...prev, row: 0, flexforRow: [] }));
     }
     if (name === "flexforRow" || name === "flexforColumn") {
       setCurrentData((prev) => ({ ...prev, [name]: value.split(",") }));
@@ -38,11 +38,16 @@ export default function Home() {
     console.log(currentData);
   }
 
-  function handleAddChild(e) {
+  async function handleAddChild(e) {
     e.preventDefault();
-    const json = addJson(flexJSON);
-    //console.log(json);
-    setFlexJSON(json);
+    await setFlexJSON((prev) => addJson(prev));
+    console.log(flexJSON);
+    await setCurrentData({
+      row: 0,
+      column: 0,
+      flexforRow: [],
+      flexforColumn: [],
+    });
   }
 
   function handleClick(e, id) {
@@ -155,7 +160,12 @@ export default function Home() {
       </form>
 
       <br />
-      <h1>Click on cells for further add rows or columns to them</h1>
+      <h1>Click on cells for further add rows or columns to them </h1>
+      {"  "}
+      <h3>
+        Not required to click on first flex add, and use export data to get JSON
+        file for your flex
+      </h3>
       <button className="button" type="button" onClick={exportData}>
         Export Data
       </button>
